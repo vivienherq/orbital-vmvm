@@ -15,6 +15,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
+  FFAppState(); // Initialize FFAppState
+
   runApp(MyApp());
 }
 
@@ -31,8 +33,8 @@ class _MyAppState extends State<MyApp> {
   Locale _locale;
   ThemeMode _themeMode = ThemeMode.system;
 
-  Stream<OrbitalMilestone1TestVivienFirebaseUser> userStream;
-  OrbitalMilestone1TestVivienFirebaseUser initialUser;
+  Stream<Milestone2DraftVivienFirebaseUser> userStream;
+  Milestone2DraftVivienFirebaseUser initialUser;
   bool displaySplashImage = true;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
@@ -40,7 +42,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    userStream = orbitalMilestone1TestVivienFirebaseUserStream()
+    userStream = milestone2DraftVivienFirebaseUserStream()
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
     Future.delayed(
       Duration(seconds: 1),
@@ -63,7 +65,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'orbital milestone 1 test vivien',
+      title: 'milestone 2 draft - vivien',
       localizationsDelegates: [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
@@ -117,6 +119,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'WhereGotTime': WhereGotTimeWidget(),
+      'Projects': ProjectsWidget(),
       'MyProfile': MyProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
@@ -136,6 +139,14 @@ class _NavBarPageState extends State<NavBarPage> {
             icon: Icon(
               Icons.calendar_today,
               size: 26,
+            ),
+            label: 'WhereGotTime',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.work_outline_rounded,
+              size: 30,
             ),
             label: 'WhereGotTime',
             tooltip: '',
