@@ -229,7 +229,7 @@ class _AddProjectsWidgetState extends State<AddProjectsWidget> {
                               children: [
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    await DatePicker.showDateTimePicker(
+                                    await DatePicker.showDatePicker(
                                       context,
                                       showTitleActions: true,
                                       onConfirm: (date) {

@@ -1,4 +1,5 @@
 import '../add_events/add_events_widget.dart';
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../edit_event/edit_event_widget.dart';
 import '../flutter_flow/flutter_flow_calendar.dart';
@@ -158,7 +159,8 @@ class _WhereGotTimeWidgetState extends State<WhereGotTimeWidget> {
                         (eventsRecord) => eventsRecord
                             .where('is_deleted', isEqualTo: false)
                             .where('event_date',
-                                isEqualTo: FFAppState().selectedDate);
+                                isEqualTo: FFAppState().selectedDate)
+                            .where('created_by', isEqualTo: currentUserEmail);
                     if (_pagingController != null) {
                       final query = queryBuilder(EventsRecord.collection);
                       if (query != _pagingQuery) {
@@ -178,7 +180,8 @@ class _WhereGotTimeWidgetState extends State<WhereGotTimeWidget> {
                         queryBuilder: (eventsRecord) => eventsRecord
                             .where('is_deleted', isEqualTo: false)
                             .where('event_date',
-                                isEqualTo: FFAppState().selectedDate),
+                                isEqualTo: FFAppState().selectedDate)
+                            .where('created_by', isEqualTo: currentUserEmail),
                         nextPageMarker: nextPageMarker,
                         pageSize: 25,
                         isStream: true,
