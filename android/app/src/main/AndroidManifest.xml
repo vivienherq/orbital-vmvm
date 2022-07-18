@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mycompany.orbitalmilestone1testvivien"
+    package="com.mycompany.orbitalvmvm"
     xmlns:tools="http://schemas.android.com/tools">
    <uses-permission android:name="android.permission.INTERNET"/>
 
    <application
-        android:label="milestone 2 draft - vivien"
+        android:label="orbital-vmvm"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
