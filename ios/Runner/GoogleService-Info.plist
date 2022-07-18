@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>337721004343-dmquqa4ipqfvgftos43jsoclrh4nc35j.apps.googleusercontent.com</string>
+	<string>287615368679-cubfj8ph5ffe1hdncm87rcjrkcsseedc.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.337721004343-dmquqa4ipqfvgftos43jsoclrh4nc35j</string>
+	<string>com.googleusercontent.apps.287615368679-cubfj8ph5ffe1hdncm87rcjrkcsseedc</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>337721004343-aps92i8qn0d00b9qr811v4mljml9u6h3.apps.googleusercontent.com</string>
+	<string>287615368679-7dtpqljevjeeac8vd7eugvo9t17529va.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAzZYPDC39d98W9i2rJxbDBZKF6ZxUjPZ0</string>
+	<string>AIzaSyBMt542WmAE1tBnbBJk1Jgn6kBp1N_3kJg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>337721004343</string>
+	<string>287615368679</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mycompany.orbitalmilestone1testvivien</string>
+	<string>com.mycompany.orbitalvmvm</string>
 	<key>PROJECT_ID</key>
-	<string>vmvm-orbital</string>
+	<string>orbital-vmvm</string>
 	<key>STORAGE_BUCKET</key>
-	<string>vmvm-orbital.appspot.com</string>
+	<string>orbital-vmvm.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:337721004343:ios:6a07c32f0786f112a08ab2</string>
+	<string>1:287615368679:ios:1e99fb0c0a12fb44c19142</string>
 </dict>
 </plist>
