@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>milestone 2 draft - vivien</string>
+	<string>orbital-vmvm</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>milestone 2 draft - vivien</string>
+	<string>orbital-vmvm</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -28,7 +28,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>com.googleusercontent.apps.337721004343-dmquqa4ipqfvgftos43jsoclrh4nc35j</string>
+                <string>com.googleusercontent.apps.287615368679-cubfj8ph5ffe1hdncm87rcjrkcsseedc</string>
                 
             </array>
         </dict>

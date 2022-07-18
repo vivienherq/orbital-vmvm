@@ -108,7 +108,9 @@ class _ProjectWidgetState extends State<ProjectWidget> {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ShareWithGroupWidget(),
+                        builder: (context) => ShareWithGroupWidget(
+                          project: widget.project,
+                        ),
                       ),
                     );
                   },

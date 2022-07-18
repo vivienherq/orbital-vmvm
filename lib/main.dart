@@ -33,8 +33,8 @@ class _MyAppState extends State<MyApp> {
   Locale _locale;
   ThemeMode _themeMode = ThemeMode.system;
 
-  Stream<Milestone2DraftVivienFirebaseUser> userStream;
-  Milestone2DraftVivienFirebaseUser initialUser;
+  Stream<OrbitalVmvmFirebaseUser> userStream;
+  OrbitalVmvmFirebaseUser initialUser;
   bool displaySplashImage = true;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    userStream = milestone2DraftVivienFirebaseUserStream()
+    userStream = orbitalVmvmFirebaseUserStream()
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
     Future.delayed(
       Duration(seconds: 1),
@@ -65,7 +65,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'milestone 2 draft - vivien',
+      title: 'orbital-vmvm',
       localizationsDelegates: [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
