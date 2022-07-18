@@ -29,6 +29,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+    textController1 = TextEditingController(text: currentUserDisplayName);
+    textController2 = TextEditingController(text: currentUserEmail);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<UsersRecord>>(
       stream: queryUsersRecord(
@@ -138,52 +145,48 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     16, 16, 16, 0),
-                                child: TextFormField(
-                                  controller: textController1 ??=
-                                      TextEditingController(
-                                    text: editProfileUsersRecord.displayName,
-                                  ),
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Full Name',
-                                    hintText: 'Your email...',
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFE7CBC0),
-                                        width: 1,
+                                child: AuthUserStreamWidget(
+                                  child: TextFormField(
+                                    controller: textController1,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Full Name',
+                                      hintText: 'Your email...',
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFFE7CBC0),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFE7CBC0),
-                                        width: 1,
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFFE7CBC0),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    filled: true,
-                                    fillColor: Color(0xFFE7CBC0),
-                                    prefixIcon: Icon(
-                                      Icons.person_rounded,
-                                      color: Color(0xFF333333),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Lexend Deca',
+                                      filled: true,
+                                      fillColor: Color(0xFFE7CBC0),
+                                      prefixIcon: Icon(
+                                        Icons.person_rounded,
                                         color: Color(0xFF333333),
                                       ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Lexend Deca',
+                                          color: Color(0xFF333333),
+                                        ),
+                                  ),
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     16, 16, 16, 0),
                                 child: TextFormField(
-                                  controller: textController2 ??=
-                                      TextEditingController(
-                                    text: editProfileUsersRecord.email,
-                                  ),
+                                  controller: textController2,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Email Address',
@@ -247,9 +250,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
 
                                           final usersUpdateData =
                                               createUsersRecordData(
-                                            displayName:
-                                                textController1?.text ?? '',
-                                            email: textController2?.text ?? '',
+                                            displayName: textController1.text,
+                                            email: textController2.text,
                                           );
                                           await editProfileUsersRecord.reference
                                               .update(usersUpdateData);
@@ -271,7 +273,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                             color: Colors.transparent,
                                             width: 1,
                                           ),
-                                          borderRadius: 8,
+                                          borderRadius:
+                                              BorderRadius.circular(8),
                                         ),
                                       ),
                                     ),
