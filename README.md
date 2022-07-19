@@ -1,5 +1,6 @@
-# orbital-vmvm
-NUS Orbital 2022 - Apollo 11
+# VMVM
+We hope to help students manage their schedules more efficiently, and to facilitate groups with meetings and work delegation. 
+
 
 ### Run Code
 
