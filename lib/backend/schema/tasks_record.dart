@@ -33,6 +33,10 @@ abstract class TasksRecord implements Built<TasksRecord, TasksRecordBuilder> {
   String get projectName;
 
   @nullable
+  @BuiltValueField(wireName: 'project_id')
+  String get projectId;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -42,7 +46,8 @@ abstract class TasksRecord implements Built<TasksRecord, TasksRecordBuilder> {
     ..assignedTo = ''
     ..isDeleted = false
     ..isDone = false
-    ..projectName = '';
+    ..projectName = ''
+    ..projectId = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Tasks');
@@ -72,6 +77,7 @@ Map<String, dynamic> createTasksRecordData({
   bool isDeleted,
   bool isDone,
   String projectName,
+  String projectId,
 }) =>
     serializers.toFirestore(
         TasksRecord.serializer,
@@ -81,4 +87,5 @@ Map<String, dynamic> createTasksRecordData({
           ..assignedTo = assignedTo
           ..isDeleted = isDeleted
           ..isDone = isDone
-          ..projectName = projectName));
+          ..projectName = projectName
+          ..projectId = projectId));

@@ -4,6 +4,7 @@ import 'users_record.dart';
 import 'projects_record.dart';
 import 'tasks_record.dart';
 import 'events_record.dart';
+import 'meetings_record.dart';
 
 import 'index.dart';
 
@@ -18,6 +19,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   ProjectsRecord,
   TasksRecord,
   EventsRecord,
+  MeetingsRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

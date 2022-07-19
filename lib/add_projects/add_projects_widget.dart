@@ -299,6 +299,8 @@ class _AddProjectsWidgetState extends State<AddProjectsWidget> {
                                         isDone: false,
                                         projectName: textController1.text,
                                         creatorEmail: currentUserEmail,
+                                        projectId:
+                                            '${currentUserUid}${textController1.text}${dateTimeFormat('d/M H:mm', getCurrentTimestamp)}',
                                       ),
                                       'shared_with': [currentUserEmail],
                                     };

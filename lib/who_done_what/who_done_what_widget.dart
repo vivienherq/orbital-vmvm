@@ -87,9 +87,9 @@ class _WhoDoneWhatWidgetState extends State<WhoDoneWhatWidget> {
                             queryBuilder: (tasksRecord) => tasksRecord
                                 .where('is_done', isEqualTo: true)
                                 .where('is_deleted', isEqualTo: false)
-                                .where('project_name',
-                                    isEqualTo: widget.project.projectName != ''
-                                        ? widget.project.projectName
+                                .where('project_id',
+                                    isEqualTo: widget.project.projectId != ''
+                                        ? widget.project.projectId
                                         : null),
                           ),
                           builder: (context, snapshot) {

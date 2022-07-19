@@ -1,29 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'events_record.dart';
+part of 'meetings_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<EventsRecord> _$eventsRecordSerializer =
-    new _$EventsRecordSerializer();
+Serializer<MeetingsRecord> _$meetingsRecordSerializer =
+    new _$MeetingsRecordSerializer();
 
-class _$EventsRecordSerializer implements StructuredSerializer<EventsRecord> {
+class _$MeetingsRecordSerializer
+    implements StructuredSerializer<MeetingsRecord> {
   @override
-  final Iterable<Type> types = const [EventsRecord, _$EventsRecord];
+  final Iterable<Type> types = const [MeetingsRecord, _$MeetingsRecord];
   @override
-  final String wireName = 'EventsRecord';
+  final String wireName = 'MeetingsRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, EventsRecord object,
+  Iterable<Object> serialize(Serializers serializers, MeetingsRecord object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
     Object value;
-    value = object.eventName;
+    value = object.meetingName;
     if (value != null) {
       result
-        ..add('event_name')
+        ..add('meeting_name')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -34,31 +35,10 @@ class _$EventsRecordSerializer implements StructuredSerializer<EventsRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.createdBy;
+    value = object.meetingDate;
     if (value != null) {
       result
-        ..add('created_by')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.isDone;
-    if (value != null) {
-      result
-        ..add('is_done')
-        ..add(
-            serializers.serialize(value, specifiedType: const FullType(bool)));
-    }
-    value = object.isDeleted;
-    if (value != null) {
-      result
-        ..add('is_deleted')
-        ..add(
-            serializers.serialize(value, specifiedType: const FullType(bool)));
-    }
-    value = object.eventDate;
-    if (value != null) {
-      result
-        ..add('event_date')
+        ..add('meeting_date')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
@@ -76,12 +56,19 @@ class _$EventsRecordSerializer implements StructuredSerializer<EventsRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
-    value = object.userName;
+    value = object.projectId;
     if (value != null) {
       result
-        ..add('user_name')
+        ..add('project_id')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
+    }
+    value = object.isDeleted;
+    if (value != null) {
+      result
+        ..add('is_deleted')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
     value = object.reference;
     if (value != null) {
@@ -95,9 +82,10 @@ class _$EventsRecordSerializer implements StructuredSerializer<EventsRecord> {
   }
 
   @override
-  EventsRecord deserialize(Serializers serializers, Iterable<Object> serialized,
+  MeetingsRecord deserialize(
+      Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new EventsRecordBuilder();
+    final result = new MeetingsRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -105,28 +93,16 @@ class _$EventsRecordSerializer implements StructuredSerializer<EventsRecord> {
       iterator.moveNext();
       final Object value = iterator.current;
       switch (key) {
-        case 'event_name':
-          result.eventName = serializers.deserialize(value,
+        case 'meeting_name':
+          result.meetingName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'created_by':
-          result.createdBy = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'is_done':
-          result.isDone = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
-          break;
-        case 'is_deleted':
-          result.isDeleted = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
-          break;
-        case 'event_date':
-          result.eventDate = serializers.deserialize(value,
+        case 'meeting_date':
+          result.meetingDate = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime;
           break;
         case 'start_time':
@@ -137,9 +113,13 @@ class _$EventsRecordSerializer implements StructuredSerializer<EventsRecord> {
           result.endTime = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime;
           break;
-        case 'user_name':
-          result.userName = serializers.deserialize(value,
+        case 'project_id':
+          result.projectId = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
+          break;
+        case 'is_deleted':
+          result.isDeleted = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
           break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
@@ -154,64 +134,57 @@ class _$EventsRecordSerializer implements StructuredSerializer<EventsRecord> {
   }
 }
 
-class _$EventsRecord extends EventsRecord {
+class _$MeetingsRecord extends MeetingsRecord {
   @override
-  final String eventName;
+  final String meetingName;
   @override
   final String description;
   @override
-  final String createdBy;
-  @override
-  final bool isDone;
-  @override
-  final bool isDeleted;
-  @override
-  final DateTime eventDate;
+  final DateTime meetingDate;
   @override
   final DateTime startTime;
   @override
   final DateTime endTime;
   @override
-  final String userName;
+  final String projectId;
+  @override
+  final bool isDeleted;
   @override
   final DocumentReference<Object> reference;
 
-  factory _$EventsRecord([void Function(EventsRecordBuilder) updates]) =>
-      (new EventsRecordBuilder()..update(updates)).build();
+  factory _$MeetingsRecord([void Function(MeetingsRecordBuilder) updates]) =>
+      (new MeetingsRecordBuilder()..update(updates)).build();
 
-  _$EventsRecord._(
-      {this.eventName,
+  _$MeetingsRecord._(
+      {this.meetingName,
       this.description,
-      this.createdBy,
-      this.isDone,
-      this.isDeleted,
-      this.eventDate,
+      this.meetingDate,
       this.startTime,
       this.endTime,
-      this.userName,
+      this.projectId,
+      this.isDeleted,
       this.reference})
       : super._();
 
   @override
-  EventsRecord rebuild(void Function(EventsRecordBuilder) updates) =>
+  MeetingsRecord rebuild(void Function(MeetingsRecordBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  EventsRecordBuilder toBuilder() => new EventsRecordBuilder()..replace(this);
+  MeetingsRecordBuilder toBuilder() =>
+      new MeetingsRecordBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is EventsRecord &&
-        eventName == other.eventName &&
+    return other is MeetingsRecord &&
+        meetingName == other.meetingName &&
         description == other.description &&
-        createdBy == other.createdBy &&
-        isDone == other.isDone &&
-        isDeleted == other.isDeleted &&
-        eventDate == other.eventDate &&
+        meetingDate == other.meetingDate &&
         startTime == other.startTime &&
         endTime == other.endTime &&
-        userName == other.userName &&
+        projectId == other.projectId &&
+        isDeleted == other.isDeleted &&
         reference == other.reference;
   }
 
@@ -223,64 +196,46 @@ class _$EventsRecord extends EventsRecord {
                 $jc(
                     $jc(
                         $jc(
-                            $jc(
-                                $jc(
-                                    $jc($jc(0, eventName.hashCode),
-                                        description.hashCode),
-                                    createdBy.hashCode),
-                                isDone.hashCode),
-                            isDeleted.hashCode),
-                        eventDate.hashCode),
-                    startTime.hashCode),
-                endTime.hashCode),
-            userName.hashCode),
+                            $jc($jc(0, meetingName.hashCode),
+                                description.hashCode),
+                            meetingDate.hashCode),
+                        startTime.hashCode),
+                    endTime.hashCode),
+                projectId.hashCode),
+            isDeleted.hashCode),
         reference.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('EventsRecord')
-          ..add('eventName', eventName)
+    return (newBuiltValueToStringHelper('MeetingsRecord')
+          ..add('meetingName', meetingName)
           ..add('description', description)
-          ..add('createdBy', createdBy)
-          ..add('isDone', isDone)
-          ..add('isDeleted', isDeleted)
-          ..add('eventDate', eventDate)
+          ..add('meetingDate', meetingDate)
           ..add('startTime', startTime)
           ..add('endTime', endTime)
-          ..add('userName', userName)
+          ..add('projectId', projectId)
+          ..add('isDeleted', isDeleted)
           ..add('reference', reference))
         .toString();
   }
 }
 
-class EventsRecordBuilder
-    implements Builder<EventsRecord, EventsRecordBuilder> {
-  _$EventsRecord _$v;
+class MeetingsRecordBuilder
+    implements Builder<MeetingsRecord, MeetingsRecordBuilder> {
+  _$MeetingsRecord _$v;
 
-  String _eventName;
-  String get eventName => _$this._eventName;
-  set eventName(String eventName) => _$this._eventName = eventName;
+  String _meetingName;
+  String get meetingName => _$this._meetingName;
+  set meetingName(String meetingName) => _$this._meetingName = meetingName;
 
   String _description;
   String get description => _$this._description;
   set description(String description) => _$this._description = description;
 
-  String _createdBy;
-  String get createdBy => _$this._createdBy;
-  set createdBy(String createdBy) => _$this._createdBy = createdBy;
-
-  bool _isDone;
-  bool get isDone => _$this._isDone;
-  set isDone(bool isDone) => _$this._isDone = isDone;
-
-  bool _isDeleted;
-  bool get isDeleted => _$this._isDeleted;
-  set isDeleted(bool isDeleted) => _$this._isDeleted = isDeleted;
-
-  DateTime _eventDate;
-  DateTime get eventDate => _$this._eventDate;
-  set eventDate(DateTime eventDate) => _$this._eventDate = eventDate;
+  DateTime _meetingDate;
+  DateTime get meetingDate => _$this._meetingDate;
+  set meetingDate(DateTime meetingDate) => _$this._meetingDate = meetingDate;
 
   DateTime _startTime;
   DateTime get startTime => _$this._startTime;
@@ -290,31 +245,33 @@ class EventsRecordBuilder
   DateTime get endTime => _$this._endTime;
   set endTime(DateTime endTime) => _$this._endTime = endTime;
 
-  String _userName;
-  String get userName => _$this._userName;
-  set userName(String userName) => _$this._userName = userName;
+  String _projectId;
+  String get projectId => _$this._projectId;
+  set projectId(String projectId) => _$this._projectId = projectId;
+
+  bool _isDeleted;
+  bool get isDeleted => _$this._isDeleted;
+  set isDeleted(bool isDeleted) => _$this._isDeleted = isDeleted;
 
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
       _$this._reference = reference;
 
-  EventsRecordBuilder() {
-    EventsRecord._initializeBuilder(this);
+  MeetingsRecordBuilder() {
+    MeetingsRecord._initializeBuilder(this);
   }
 
-  EventsRecordBuilder get _$this {
+  MeetingsRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _eventName = $v.eventName;
+      _meetingName = $v.meetingName;
       _description = $v.description;
-      _createdBy = $v.createdBy;
-      _isDone = $v.isDone;
-      _isDeleted = $v.isDeleted;
-      _eventDate = $v.eventDate;
+      _meetingDate = $v.meetingDate;
       _startTime = $v.startTime;
       _endTime = $v.endTime;
-      _userName = $v.userName;
+      _projectId = $v.projectId;
+      _isDeleted = $v.isDeleted;
       _reference = $v.reference;
       _$v = null;
     }
@@ -322,29 +279,27 @@ class EventsRecordBuilder
   }
 
   @override
-  void replace(EventsRecord other) {
+  void replace(MeetingsRecord other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$EventsRecord;
+    _$v = other as _$MeetingsRecord;
   }
 
   @override
-  void update(void Function(EventsRecordBuilder) updates) {
+  void update(void Function(MeetingsRecordBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$EventsRecord build() {
+  _$MeetingsRecord build() {
     final _$result = _$v ??
-        new _$EventsRecord._(
-            eventName: eventName,
+        new _$MeetingsRecord._(
+            meetingName: meetingName,
             description: description,
-            createdBy: createdBy,
-            isDone: isDone,
-            isDeleted: isDeleted,
-            eventDate: eventDate,
+            meetingDate: meetingDate,
             startTime: startTime,
             endTime: endTime,
-            userName: userName,
+            projectId: projectId,
+            isDeleted: isDeleted,
             reference: reference);
     replace(_$result);
     return _$result;

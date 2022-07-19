@@ -12,6 +12,9 @@ export 'project/project_widget.dart' show ProjectWidget;
 export 'share_with_group/share_with_group_widget.dart'
     show ShareWithGroupWidget;
 export 'edit_project/edit_project_widget.dart' show EditProjectWidget;
+export 'when_meet/when_meet_widget.dart' show WhenMeetWidget;
+export 'add_meeting/add_meeting_widget.dart' show AddMeetingWidget;
+export 'edit_meeting/edit_meeting_widget.dart' show EditMeetingWidget;
 export 'who_do_what/who_do_what_widget.dart' show WhoDoWhatWidget;
 export 'add_tasks/add_tasks_widget.dart' show AddTasksWidget;
 export 'edit_task/edit_task_widget.dart' show EditTaskWidget;

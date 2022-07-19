@@ -61,6 +61,13 @@ class _$TasksRecordSerializer implements StructuredSerializer<TasksRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.projectId;
+    if (value != null) {
+      result
+        ..add('project_id')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -107,6 +114,10 @@ class _$TasksRecordSerializer implements StructuredSerializer<TasksRecord> {
           result.projectName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'project_id':
+          result.projectId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -134,6 +145,8 @@ class _$TasksRecord extends TasksRecord {
   @override
   final String projectName;
   @override
+  final String projectId;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$TasksRecord([void Function(TasksRecordBuilder) updates]) =>
@@ -146,6 +159,7 @@ class _$TasksRecord extends TasksRecord {
       this.isDeleted,
       this.isDone,
       this.projectName,
+      this.projectId,
       this.reference})
       : super._();
 
@@ -166,6 +180,7 @@ class _$TasksRecord extends TasksRecord {
         isDeleted == other.isDeleted &&
         isDone == other.isDone &&
         projectName == other.projectName &&
+        projectId == other.projectId &&
         reference == other.reference;
   }
 
@@ -175,11 +190,15 @@ class _$TasksRecord extends TasksRecord {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, taskName.hashCode), description.hashCode),
-                        assignedTo.hashCode),
-                    isDeleted.hashCode),
-                isDone.hashCode),
-            projectName.hashCode),
+                    $jc(
+                        $jc(
+                            $jc($jc(0, taskName.hashCode),
+                                description.hashCode),
+                            assignedTo.hashCode),
+                        isDeleted.hashCode),
+                    isDone.hashCode),
+                projectName.hashCode),
+            projectId.hashCode),
         reference.hashCode));
   }
 
@@ -192,6 +211,7 @@ class _$TasksRecord extends TasksRecord {
           ..add('isDeleted', isDeleted)
           ..add('isDone', isDone)
           ..add('projectName', projectName)
+          ..add('projectId', projectId)
           ..add('reference', reference))
         .toString();
   }
@@ -224,6 +244,10 @@ class TasksRecordBuilder implements Builder<TasksRecord, TasksRecordBuilder> {
   String get projectName => _$this._projectName;
   set projectName(String projectName) => _$this._projectName = projectName;
 
+  String _projectId;
+  String get projectId => _$this._projectId;
+  set projectId(String projectId) => _$this._projectId = projectId;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -242,6 +266,7 @@ class TasksRecordBuilder implements Builder<TasksRecord, TasksRecordBuilder> {
       _isDeleted = $v.isDeleted;
       _isDone = $v.isDone;
       _projectName = $v.projectName;
+      _projectId = $v.projectId;
       _reference = $v.reference;
       _$v = null;
     }
@@ -269,6 +294,7 @@ class TasksRecordBuilder implements Builder<TasksRecord, TasksRecordBuilder> {
             isDeleted: isDeleted,
             isDone: isDone,
             projectName: projectName,
+            projectId: projectId,
             reference: reference);
     replace(_$result);
     return _$result;

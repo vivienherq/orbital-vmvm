@@ -375,6 +375,7 @@ class _AddEventsWidgetState extends State<AddEventsWidget> {
                                       eventDate: datePicked1,
                                       startTime: datePicked2,
                                       endTime: datePicked3,
+                                      userName: currentUserDisplayName,
                                     );
                                     await EventsRecord.collection
                                         .doc()

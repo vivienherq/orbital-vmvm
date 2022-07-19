@@ -22,14 +22,6 @@ abstract class EventsRecord
   String get createdBy;
 
   @nullable
-  @BuiltValueField(wireName: 'from_date')
-  DateTime get fromDate;
-
-  @nullable
-  @BuiltValueField(wireName: 'to_date')
-  DateTime get toDate;
-
-  @nullable
   @BuiltValueField(wireName: 'is_done')
   bool get isDone;
 
@@ -50,6 +42,10 @@ abstract class EventsRecord
   DateTime get endTime;
 
   @nullable
+  @BuiltValueField(wireName: 'user_name')
+  String get userName;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -58,7 +54,8 @@ abstract class EventsRecord
     ..description = ''
     ..createdBy = ''
     ..isDone = false
-    ..isDeleted = false;
+    ..isDeleted = false
+    ..userName = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Events');
@@ -85,13 +82,12 @@ Map<String, dynamic> createEventsRecordData({
   String eventName,
   String description,
   String createdBy,
-  DateTime fromDate,
-  DateTime toDate,
   bool isDone,
   bool isDeleted,
   DateTime eventDate,
   DateTime startTime,
   DateTime endTime,
+  String userName,
 }) =>
     serializers.toFirestore(
         EventsRecord.serializer,
@@ -99,10 +95,9 @@ Map<String, dynamic> createEventsRecordData({
           ..eventName = eventName
           ..description = description
           ..createdBy = createdBy
-          ..fromDate = fromDate
-          ..toDate = toDate
           ..isDone = isDone
           ..isDeleted = isDeleted
           ..eventDate = eventDate
           ..startTime = startTime
-          ..endTime = endTime));
+          ..endTime = endTime
+          ..userName = userName));

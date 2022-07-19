@@ -81,6 +81,7 @@ class _WhoDoWhatWidgetState extends State<WhoDoWhatWidget> {
                 reverseDuration: Duration(milliseconds: 270),
                 child: AddTasksWidget(
                   projectName: widget.project.projectName,
+                  project: widget.project,
                 ),
               ),
             );
@@ -121,9 +122,9 @@ class _WhoDoWhatWidgetState extends State<WhoDoWhatWidget> {
                             queryBuilder: (tasksRecord) => tasksRecord
                                 .where('is_done', isEqualTo: false)
                                 .where('is_deleted', isEqualTo: false)
-                                .where('project_name',
-                                    isEqualTo: widget.project.projectName != ''
-                                        ? widget.project.projectName
+                                .where('project_id',
+                                    isEqualTo: widget.project.projectId != ''
+                                        ? widget.project.projectId
                                         : null),
                           ),
                           builder: (context, snapshot) {

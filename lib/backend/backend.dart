@@ -8,6 +8,7 @@ import 'schema/users_record.dart';
 import 'schema/projects_record.dart';
 import 'schema/tasks_record.dart';
 import 'schema/events_record.dart';
+import 'schema/meetings_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -19,6 +20,7 @@ export 'schema/users_record.dart';
 export 'schema/projects_record.dart';
 export 'schema/tasks_record.dart';
 export 'schema/events_record.dart';
+export 'schema/meetings_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord({
@@ -182,6 +184,48 @@ Future<FFFirestorePage<EventsRecord>> queryEventsRecordPage({
     queryCollectionPage(
       EventsRecord.collection,
       EventsRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query MeetingsRecords (as a Stream and as a Future).
+Stream<List<MeetingsRecord>> queryMeetingsRecord({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      MeetingsRecord.collection,
+      MeetingsRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<MeetingsRecord>> queryMeetingsRecordOnce({
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      MeetingsRecord.collection,
+      MeetingsRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<MeetingsRecord>> queryMeetingsRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+  bool isStream,
+}) =>
+    queryCollectionPage(
+      MeetingsRecord.collection,
+      MeetingsRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

@@ -10,19 +10,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EditEventWidget extends StatefulWidget {
-  const EditEventWidget({
+class EditMeetingWidget extends StatefulWidget {
+  const EditMeetingWidget({
     Key key,
-    this.event,
+    this.meeting,
   }) : super(key: key);
 
-  final EventsRecord event;
+  final MeetingsRecord meeting;
 
   @override
-  _EditEventWidgetState createState() => _EditEventWidgetState();
+  _EditMeetingWidgetState createState() => _EditMeetingWidgetState();
 }
 
-class _EditEventWidgetState extends State<EditEventWidget> {
+class _EditMeetingWidgetState extends State<EditMeetingWidget> {
   DateTime datePicked1;
   TextEditingController textController1;
   TextEditingController textController2;
@@ -33,8 +33,8 @@ class _EditEventWidgetState extends State<EditEventWidget> {
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController(text: widget.event.eventName);
-    textController2 = TextEditingController(text: widget.event.description);
+    textController1 = TextEditingController(text: widget.meeting.meetingName);
+    textController2 = TextEditingController(text: widget.meeting.description);
   }
 
   @override
@@ -115,7 +115,7 @@ class _EditEventWidgetState extends State<EditEventWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  'Edit Event',
+                                  'Edit Meeting',
                                   style: FlutterFlowTheme.of(context)
                                       .title2
                                       .override(
@@ -133,7 +133,7 @@ class _EditEventWidgetState extends State<EditEventWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  'Edit event details below.',
+                                  'Edit meeting details below.',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
@@ -157,7 +157,7 @@ class _EditEventWidgetState extends State<EditEventWidget> {
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelText: 'Event Name',
+                                labelText: 'Meeting Name',
                                 hintText: 'Enter your event here...',
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -371,17 +371,16 @@ class _EditEventWidgetState extends State<EditEventWidget> {
                                 ),
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    final eventsUpdateData =
-                                        createEventsRecordData(
-                                      eventName: textController1.text,
+                                    final meetingsUpdateData =
+                                        createMeetingsRecordData(
+                                      meetingName: textController1.text,
                                       description: textController2.text,
-                                      isDeleted: false,
-                                      eventDate: datePicked1,
+                                      meetingDate: datePicked1,
                                       startTime: datePicked2,
                                       endTime: datePicked3,
                                     );
-                                    await widget.event.reference
-                                        .update(eventsUpdateData);
+                                    await widget.meeting.reference
+                                        .update(meetingsUpdateData);
                                     Navigator.pop(context);
                                   },
                                   text: 'Save',
@@ -414,12 +413,12 @@ class _EditEventWidgetState extends State<EditEventWidget> {
                               children: [
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    final eventsUpdateData =
-                                        createEventsRecordData(
+                                    final meetingsUpdateData =
+                                        createMeetingsRecordData(
                                       isDeleted: true,
                                     );
-                                    await widget.event.reference
-                                        .update(eventsUpdateData);
+                                    await widget.meeting.reference
+                                        .update(meetingsUpdateData);
                                     Navigator.pop(context);
                                   },
                                   text: 'Delete',

@@ -13,9 +13,11 @@ class AddTasksWidget extends StatefulWidget {
   const AddTasksWidget({
     Key key,
     this.projectName,
+    this.project,
   }) : super(key: key);
 
   final String projectName;
+  final ProjectsRecord project;
 
   @override
   _AddTasksWidgetState createState() => _AddTasksWidgetState();
@@ -346,7 +348,7 @@ class _AddTasksWidgetState extends State<AddTasksWidget> {
                                       taskName: textController2.text,
                                       assignedTo: textController4.text,
                                       isDone: false,
-                                      projectName: textController1.text,
+                                      projectId: widget.project.projectId,
                                     );
                                     await TasksRecord.collection
                                         .doc()

@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../share_with_group/share_with_group_widget.dart';
+import '../when_meet/when_meet_widget.dart';
 import '../who_do_what/who_do_what_widget.dart';
 import '../who_done_what/who_done_what_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -164,35 +165,47 @@ class _ProjectWidgetState extends State<ProjectWidget> {
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 8),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16, 8, 0, 16),
-                                child: Text(
-                                  'WhenMeet',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: Color(0xFF333333),
-                                      ),
+                        child: InkWell(
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => WhenMeetWidget(
+                                  project: widget.project,
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 12, 8),
-                              child: Icon(
-                                Icons.arrow_forward_ios,
-                                color: Color(0xFF333333),
-                                size: 24,
+                            );
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 8, 0, 16),
+                                  child: Text(
+                                    'WhenMeet',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Lexend Deca',
+                                          color: Color(0xFF333333),
+                                        ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 12, 8),
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Color(0xFF333333),
+                                  size: 24,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Divider(

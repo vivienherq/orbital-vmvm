@@ -71,6 +71,13 @@ class _$ProjectsRecordSerializer
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
+    value = object.projectId;
+    if (value != null) {
+      result
+        ..add('project_id')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -124,6 +131,10 @@ class _$ProjectsRecordSerializer
                       const FullType(BuiltList, const [const FullType(String)]))
               as BuiltList<Object>);
           break;
+        case 'project_id':
+          result.projectId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -153,6 +164,8 @@ class _$ProjectsRecord extends ProjectsRecord {
   @override
   final BuiltList<String> sharedWith;
   @override
+  final String projectId;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$ProjectsRecord([void Function(ProjectsRecordBuilder) updates]) =>
@@ -166,6 +179,7 @@ class _$ProjectsRecord extends ProjectsRecord {
       this.isDone,
       this.isDeleted,
       this.sharedWith,
+      this.projectId,
       this.reference})
       : super._();
 
@@ -188,6 +202,7 @@ class _$ProjectsRecord extends ProjectsRecord {
         isDone == other.isDone &&
         isDeleted == other.isDeleted &&
         sharedWith == other.sharedWith &&
+        projectId == other.projectId &&
         reference == other.reference;
   }
 
@@ -199,13 +214,15 @@ class _$ProjectsRecord extends ProjectsRecord {
                 $jc(
                     $jc(
                         $jc(
-                            $jc($jc(0, projectName.hashCode),
-                                creatorEmail.hashCode),
-                            deadline.hashCode),
-                        description.hashCode),
-                    isDone.hashCode),
-                isDeleted.hashCode),
-            sharedWith.hashCode),
+                            $jc(
+                                $jc($jc(0, projectName.hashCode),
+                                    creatorEmail.hashCode),
+                                deadline.hashCode),
+                            description.hashCode),
+                        isDone.hashCode),
+                    isDeleted.hashCode),
+                sharedWith.hashCode),
+            projectId.hashCode),
         reference.hashCode));
   }
 
@@ -219,6 +236,7 @@ class _$ProjectsRecord extends ProjectsRecord {
           ..add('isDone', isDone)
           ..add('isDeleted', isDeleted)
           ..add('sharedWith', sharedWith)
+          ..add('projectId', projectId)
           ..add('reference', reference))
         .toString();
   }
@@ -258,6 +276,10 @@ class ProjectsRecordBuilder
   set sharedWith(ListBuilder<String> sharedWith) =>
       _$this._sharedWith = sharedWith;
 
+  String _projectId;
+  String get projectId => _$this._projectId;
+  set projectId(String projectId) => _$this._projectId = projectId;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -277,6 +299,7 @@ class ProjectsRecordBuilder
       _isDone = $v.isDone;
       _isDeleted = $v.isDeleted;
       _sharedWith = $v.sharedWith?.toBuilder();
+      _projectId = $v.projectId;
       _reference = $v.reference;
       _$v = null;
     }
@@ -307,6 +330,7 @@ class ProjectsRecordBuilder
               isDone: isDone,
               isDeleted: isDeleted,
               sharedWith: _sharedWith?.build(),
+              projectId: projectId,
               reference: reference);
     } catch (_) {
       String _$failedField;

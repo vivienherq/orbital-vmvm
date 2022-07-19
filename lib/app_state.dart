@@ -21,12 +21,14 @@ class FFAppState {
 
   SharedPreferences prefs;
 
-  DateTime _selectedDate = DateTime.fromMillisecondsSinceEpoch(1656261000000);
+  DateTime _selectedDate;
   DateTime get selectedDate => _selectedDate;
   set selectedDate(DateTime _value) {
     _selectedDate = _value;
     prefs.setInt('ff_selectedDate', _value.millisecondsSinceEpoch);
   }
+
+  DateTime selectedDateProj;
 }
 
 LatLng _latLngFromString(String val) {

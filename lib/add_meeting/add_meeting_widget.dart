@@ -10,19 +10,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EditEventWidget extends StatefulWidget {
-  const EditEventWidget({
+class AddMeetingWidget extends StatefulWidget {
+  const AddMeetingWidget({
     Key key,
-    this.event,
+    this.project,
   }) : super(key: key);
 
-  final EventsRecord event;
+  final ProjectsRecord project;
 
   @override
-  _EditEventWidgetState createState() => _EditEventWidgetState();
+  _AddMeetingWidgetState createState() => _AddMeetingWidgetState();
 }
 
-class _EditEventWidgetState extends State<EditEventWidget> {
+class _AddMeetingWidgetState extends State<AddMeetingWidget> {
   DateTime datePicked1;
   TextEditingController textController1;
   TextEditingController textController2;
@@ -33,8 +33,8 @@ class _EditEventWidgetState extends State<EditEventWidget> {
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController(text: widget.event.eventName);
-    textController2 = TextEditingController(text: widget.event.description);
+    textController1 = TextEditingController();
+    textController2 = TextEditingController();
   }
 
   @override
@@ -115,7 +115,7 @@ class _EditEventWidgetState extends State<EditEventWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  'Edit Event',
+                                  'Add Meeting',
                                   style: FlutterFlowTheme.of(context)
                                       .title2
                                       .override(
@@ -133,7 +133,7 @@ class _EditEventWidgetState extends State<EditEventWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  'Edit event details below.',
+                                  'Fill out the details below to add a new meeting.',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
@@ -157,8 +157,8 @@ class _EditEventWidgetState extends State<EditEventWidget> {
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelText: 'Event Name',
-                                hintText: 'Enter your event here...',
+                                labelText: 'Meeting Name',
+                                hintText: 'Enter your meeting here...',
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0xFFD6B8AC),
@@ -246,7 +246,7 @@ class _EditEventWidgetState extends State<EditEventWidget> {
                                       minTime: DateTime(0, 0, 0),
                                     );
                                   },
-                                  text: 'Select event date here...',
+                                  text: 'Select meeting date here...',
                                   options: FFButtonOptions(
                                     width: 344,
                                     height: 40,
@@ -309,14 +309,13 @@ class _EditEventWidgetState extends State<EditEventWidget> {
                                 ),
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    await DatePicker.showDatePicker(
+                                    await DatePicker.showTimePicker(
                                       context,
                                       showTitleActions: true,
                                       onConfirm: (date) {
                                         setState(() => datePicked3 = date);
                                       },
                                       currentTime: getCurrentTimestamp,
-                                      minTime: DateTime(0, 0, 0),
                                     );
                                   },
                                   text: 'End time...',
@@ -371,58 +370,22 @@ class _EditEventWidgetState extends State<EditEventWidget> {
                                 ),
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    final eventsUpdateData =
-                                        createEventsRecordData(
-                                      eventName: textController1.text,
+                                    final meetingsCreateData =
+                                        createMeetingsRecordData(
+                                      meetingName: textController1.text,
                                       description: textController2.text,
-                                      isDeleted: false,
-                                      eventDate: datePicked1,
+                                      meetingDate: datePicked1,
                                       startTime: datePicked2,
                                       endTime: datePicked3,
+                                      projectId: widget.project.projectId,
+                                      isDeleted: false,
                                     );
-                                    await widget.event.reference
-                                        .update(eventsUpdateData);
+                                    await MeetingsRecord.collection
+                                        .doc()
+                                        .set(meetingsCreateData);
                                     Navigator.pop(context);
                                   },
-                                  text: 'Save',
-                                  options: FFButtonOptions(
-                                    width: 130,
-                                    height: 40,
-                                    color: Color(0xFFCD9F8D),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
-                                        .override(
-                                          fontFamily: 'Lexend Deca',
-                                          color: Color(0xFF333333),
-                                        ),
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                FFButtonWidget(
-                                  onPressed: () async {
-                                    final eventsUpdateData =
-                                        createEventsRecordData(
-                                      isDeleted: true,
-                                    );
-                                    await widget.event.reference
-                                        .update(eventsUpdateData);
-                                    Navigator.pop(context);
-                                  },
-                                  text: 'Delete',
+                                  text: 'Create',
                                   options: FFButtonOptions(
                                     width: 130,
                                     height: 40,
