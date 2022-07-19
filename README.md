@@ -4,8 +4,11 @@ NUS Orbital 2022 - Apollo 11
 ### Run Code
 
 `flutter pub get`
+
 `flutter packages pub run build_runner build --delete-conflicting-outputs`
+
 `flutter clean`
+
 `flutter run`
 
 ### Troubleshooting
@@ -16,5 +19,7 @@ Could not build the application for the simulator.
 Error launching application on iPhone 13.
 
 `cd ios`
+
 `arch -x86_64 pod install`
+
 `sudo arch -x86_64 gem install ffi`
