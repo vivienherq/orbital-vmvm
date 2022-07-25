@@ -330,6 +330,25 @@ class _AddProjectsWidgetState extends State<AddProjectsWidget> {
                               ],
                             ),
                           ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  'Deadline must be specified to create project.',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Lexend Deca',
+                                        color: Color(0xFF333333),
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),

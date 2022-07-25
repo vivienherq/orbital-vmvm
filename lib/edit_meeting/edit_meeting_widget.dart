@@ -309,14 +309,13 @@ class _EditMeetingWidgetState extends State<EditMeetingWidget> {
                                 ),
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    await DatePicker.showDatePicker(
+                                    await DatePicker.showTimePicker(
                                       context,
                                       showTitleActions: true,
                                       onConfirm: (date) {
                                         setState(() => datePicked3 = date);
                                       },
                                       currentTime: getCurrentTimestamp,
-                                      minTime: DateTime(0, 0, 0),
                                     );
                                   },
                                   text: 'End time...',

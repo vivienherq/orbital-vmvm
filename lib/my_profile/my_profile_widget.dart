@@ -12,10 +12,10 @@ import 'package:google_fonts/google_fonts.dart';
 class MyProfileWidget extends StatefulWidget {
   const MyProfileWidget({
     Key key,
-    this.displayName,
+    this.user,
   }) : super(key: key);
 
-  final UsersRecord displayName;
+  final UsersRecord user;
 
   @override
   _MyProfileWidgetState createState() => _MyProfileWidgetState();
@@ -87,15 +87,13 @@ class _MyProfileWidgetState extends State<MyProfileWidget> {
                       ),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        child: AuthUserStreamWidget(
-                          child: Text(
-                            currentUserDisplayName,
-                            style:
-                                FlutterFlowTheme.of(context).subtitle1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF333333),
-                                    ),
-                          ),
+                        child: Text(
+                          myProfileUsersRecord.email,
+                          style:
+                              FlutterFlowTheme.of(context).subtitle1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF333333),
+                                  ),
                         ),
                       ),
                     ),
@@ -131,8 +129,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => EditProfileWidget(
-                                  displayName: myProfileUsersRecord,
-                                  email: myProfileUsersRecord,
+                                  user: myProfileUsersRecord,
                                 ),
                               ),
                             );

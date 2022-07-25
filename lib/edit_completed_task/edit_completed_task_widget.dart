@@ -132,7 +132,7 @@ class _EditCompletedTaskWidgetState extends State<EditCompletedTaskWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  'Fill out the details below to add a new task.',
+                                  'Edit task details below.',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(

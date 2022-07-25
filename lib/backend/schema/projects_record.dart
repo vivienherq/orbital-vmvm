@@ -42,6 +42,10 @@ abstract class ProjectsRecord
   String get projectId;
 
   @nullable
+  @BuiltValueField(wireName: 'telegram_id')
+  int get telegramId;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -52,7 +56,8 @@ abstract class ProjectsRecord
     ..isDone = false
     ..isDeleted = false
     ..sharedWith = ListBuilder()
-    ..projectId = '';
+    ..projectId = ''
+    ..telegramId = 0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Projects');
@@ -83,6 +88,7 @@ Map<String, dynamic> createProjectsRecordData({
   bool isDone,
   bool isDeleted,
   String projectId,
+  int telegramId,
 }) =>
     serializers.toFirestore(
         ProjectsRecord.serializer,
@@ -94,4 +100,5 @@ Map<String, dynamic> createProjectsRecordData({
           ..isDone = isDone
           ..isDeleted = isDeleted
           ..sharedWith = null
-          ..projectId = projectId));
+          ..projectId = projectId
+          ..telegramId = telegramId));
