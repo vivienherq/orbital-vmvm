@@ -11,12 +11,10 @@ import 'package:google_fonts/google_fonts.dart';
 class EditProfileWidget extends StatefulWidget {
   const EditProfileWidget({
     Key key,
-    this.displayName,
-    this.email,
+    this.user,
   }) : super(key: key);
 
-  final UsersRecord displayName;
-  final UsersRecord email;
+  final UsersRecord user;
 
   @override
   _EditProfileWidgetState createState() => _EditProfileWidgetState();
@@ -31,8 +29,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController(text: currentUserDisplayName);
-    textController2 = TextEditingController(text: currentUserEmail);
+    textController1 = TextEditingController(text: widget.user.displayName);
+    textController2 = TextEditingController(text: widget.user.email);
   }
 
   @override
@@ -145,41 +143,39 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     16, 16, 16, 0),
-                                child: AuthUserStreamWidget(
-                                  child: TextFormField(
-                                    controller: textController1,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelText: 'Full Name',
-                                      hintText: 'Your email...',
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFFE7CBC0),
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
+                                child: TextFormField(
+                                  controller: textController1,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelText: 'Full Name',
+                                    hintText: 'Your email...',
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0xFFE7CBC0),
+                                        width: 1,
                                       ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFFE7CBC0),
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0xFFE7CBC0),
+                                        width: 1,
                                       ),
-                                      filled: true,
-                                      fillColor: Color(0xFFE7CBC0),
-                                      prefixIcon: Icon(
-                                        Icons.person_rounded,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    filled: true,
+                                    fillColor: Color(0xFFE7CBC0),
+                                    prefixIcon: Icon(
+                                      Icons.person_rounded,
+                                      color: Color(0xFF333333),
+                                    ),
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Lexend Deca',
                                         color: Color(0xFF333333),
                                       ),
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Lexend Deca',
-                                          color: Color(0xFF333333),
-                                        ),
-                                  ),
                                 ),
                               ),
                               Padding(

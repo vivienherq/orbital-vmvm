@@ -144,7 +144,7 @@ class _WhenMeetWidgetState extends State<WhenMeetWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                           child: Text(
-                            'Member\'s Schedules',
+                            'Members\' Schedules',
                             style: FlutterFlowTheme.of(context).title3.override(
                                   fontFamily: 'Lexend Deca',
                                   color: Color(0xFF333333),
@@ -213,7 +213,7 @@ class _WhenMeetWidgetState extends State<WhenMeetWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: Text(
-                  'Meetings',
+                  'Upcoming Meetings',
                   style: FlutterFlowTheme.of(context).title3.override(
                         fontFamily: 'Lexend Deca',
                         color: Color(0xFF333333),
@@ -223,7 +223,10 @@ class _WhenMeetWidgetState extends State<WhenMeetWidget> {
               StreamBuilder<List<MeetingsRecord>>(
                 stream: queryMeetingsRecord(
                   queryBuilder: (meetingsRecord) => meetingsRecord
-                      .where('project_id', isEqualTo: widget.project.projectId),
+                      .where('project_id', isEqualTo: widget.project.projectId)
+                      .where('is_deleted', isEqualTo: false)
+                      .where('meeting_date',
+                          isGreaterThanOrEqualTo: getCurrentTimestamp),
                 ),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
