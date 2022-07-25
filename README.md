@@ -1,5 +1,4 @@
 # VMVM
-We hope to help students manage their schedules more efficiently, and to facilitate groups with meetings and work delegation. 
 
 
 ### Run Code
